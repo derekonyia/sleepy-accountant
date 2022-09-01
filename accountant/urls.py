@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from users.views import dashboard_view
+from invoice.views import dashboard_view, invoice_detail_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', dashboard_view, name='dashboard view'),
+    path('invoice/<int:id>',invoice_detail_view, name='invoice_detail_view' ),
 ]

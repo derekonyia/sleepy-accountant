@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<section class="container">
+		
+
+		<section>
+			<p class="h1">Current User</p>
+
+		</section>
+		<!-- <hr class="hr hr-blurry" /> -->
+		<p></p>
+		<section class="d-flex justify-content-between">			
+			
+				<!-- <img src="https://mdbootstrap.com/img/new/textures/small/52.jpg" class="float-end"> -->
+			<table class="table">
+			  <thead class="table-primary">
+			  	<tr>
+			  		<th scope="col">
+			  				<div>
+					  			<p class="h5"> Billed to:
+								<small class="text-muted">{{ invoice.client.username }}</small>
+								<br>
+								<small class="text-muted">{{ invoice.client.email }}</small>
+								<br>
+								<small class="text-muted">{{ invoice.client.address }}</small>
+								</p>				  	
+					  		</div>
+			  		</th>
+			        	
+			        <th scope="col"></th>
+			        <th scope="col">
+			        	<div>
+				  			<p class="h5 "> Invoice Number:<small class="text-muted"> SI-{{ invoice.pk }}</small> </p>
+							<p class="h5"> Invoice Date: <small class="text-muted">{{ invoice.issue_date }}</small></p>
+					  	</div>
+			        </th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	
+			  </tbody>
+			</table>
+									
+	  		
+	  		
+	  		
+
+		</section>
+		
+		<section >
+			<!-- invoice table -->
+			<table class="table">
+			  <thead class="table-primary">
+			  	<tr>
+			  		<th scope="col">Description</th>
+			        <th scope="col">Unit Cost</th>	
+			        <th scope="col">Quantity</th>
+			        <th scope="col">Amount</th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	{% for invoice in invoice_details %}
+				  	<tr>
+				  		<td class="small">{{ invoice.description }}</td>
+				  		<td class="small">{{ invoice.unit_cost }}</td>
+				  		<td class="small">{{ invoice.qty }}</td>
+				  		<td class="small">{{ invoice.amount }}</td>
+				  	</tr>
+			  	{% endfor %}
+			  	
+			  </tbody>
+			</table>
+			<div class="d-inline-flex p-2">
+				<table class="table">
+					<tbody>
+						<tr class="table-primary">	 
+					      <th scope="row">Subtotal</th>
+					      <td>{{subtotal}}</td>
+					    </tr>
+					    <tr class="table-primary">	 
+					      <th scope="row">Tax</th>
+					      <td>{{invoice.tax}}</td>
+					    </tr>
+					    <tr class="table-primary">	 
+					      <th scope="row">Total</th>
+					      <td>{{total}}</td>
+					    </tr>
+				    </tbody>
+				</table>
+		    </div>
+			<!-- invoice table -->
+		</section>
+	</section>
+
+{% endblock %}
